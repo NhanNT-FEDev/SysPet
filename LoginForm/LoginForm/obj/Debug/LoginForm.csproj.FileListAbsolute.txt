@@ -22,3 +22,26 @@ D:\Data\C#\Prj WPF\LoginForm\LoginForm\bin\Debug\PagedList.Mvc.dll
 D:\Data\C#\Prj WPF\LoginForm\LoginForm\bin\Debug\PagedList.xml
 D:\Data\C#\Prj WPF\LoginForm\LoginForm\bin\Debug\PagedList.Mvc.xml
 D:\Data\C#\Prj WPF\LoginForm\LoginForm\obj\Debug\LoginForm_Content.g.cs
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\LoginForm.exe.config
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm.exe
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm.pdb
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\LoginForm.exe
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\LoginForm.pdb
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\EntityFramework.dll
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\PagedList.dll
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\PagedList.Mvc.dll
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\EntityFramework.xml
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\PagedList.xml
+D:\GitHub\SysPet\LoginForm\LoginForm\bin\Debug\PagedList.Mvc.xml
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm.csprojResolveAssemblyReference.cache
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\MainWindow.g.cs
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\App.g.cs
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm_Content.g.cs
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm_MarkupCompile.cache
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm_MarkupCompile.lref
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\MainWindow.baml
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm.g.resources
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm.Properties.Resources.resources
+D:\GitHub\SysPet\LoginForm\LoginForm\obj\Debug\LoginForm.csproj.GenerateResource.Cache
