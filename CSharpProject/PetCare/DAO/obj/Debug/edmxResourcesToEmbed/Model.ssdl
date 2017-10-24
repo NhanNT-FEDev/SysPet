@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fall2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Breed">
+    <Key>
+      <PropertyRef Name="BreedID" />
+    </Key>
+    <Property Name="BreedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpeciesID" Type="int" Nullable="false" />
+    <Property Name="BreedName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carer">
+    <Key>
+      <PropertyRef Name="CarerID" />
+    </Key>
+    <Property Name="CarerID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="CarerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="OwnerID" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="OwnerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pet_Carer">
+    <Key>
+      <PropertyRef Name="CarerID" />
+      <PropertyRef Name="PetID" />
+    </Key>
+    <Property Name="CarerID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="PetID" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PetDetail">
+    <Key>
+      <PropertyRef Name="PetID" />
+    </Key>
+    <Property Name="PetID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="PetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Species" Type="int" Nullable="false" />
+    <Property Name="Breed" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="bit" Nullable="false" />
+    <Property Name="DayOfBirth" Type="date" />
+    <Property Name="OwnerID" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="InDate" Type="date" Nullable="false" />
+    <Property Name="OutDate" Type="date" />
+    <Property Name="MedicalRecord" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="SpeciesID" />
+    </Key>
+    <Property Name="SpeciesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpeciesName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Breed_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="Breed" Type="Self.Breed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesID" />
+      </Principal>
+      <Dependent Role="Breed">
+        <PropertyRef Name="SpeciesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pet_Carer_Carer1">
+    <End Role="Carer" Type="Self.Carer" Multiplicity="1" />
+    <End Role="Pet_Carer" Type="Self.Pet_Carer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carer">
+        <PropertyRef Name="CarerID" />
+      </Principal>
+      <Dependent Role="Pet_Carer">
+        <PropertyRef Name="CarerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pet_Carer_PetDetail1">
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="1" />
+    <End Role="Pet_Carer" Type="Self.Pet_Carer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetDetail">
+        <PropertyRef Name="PetID" />
+      </Principal>
+      <Dependent Role="Pet_Carer">
+        <PropertyRef Name="PetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PetDetail_Breed">
+    <End Role="Breed" Type="Self.Breed" Multiplicity="1" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Breed">
+        <PropertyRef Name="BreedID" />
+      </Principal>
+      <Dependent Role="PetDetail">
+        <PropertyRef Name="Breed" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PetDetail_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="PetDetail">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PetDetail_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesID" />
+      </Principal>
+      <Dependent Role="PetDetail">
+        <PropertyRef Name="Species" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Fall2017ModelStoreContainer">
+    <EntitySet Name="Breed" EntityType="Self.Breed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carer" EntityType="Self.Carer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pet_Carer" EntityType="Self.Pet_Carer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PetDetail" EntityType="Self.PetDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Breed_Species" Association="Self.FK_Breed_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Breed" EntitySet="Breed" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pet_Carer_Carer1" Association="Self.FK_Pet_Carer_Carer1">
+      <End Role="Carer" EntitySet="Carer" />
+      <End Role="Pet_Carer" EntitySet="Pet_Carer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pet_Carer_PetDetail1" Association="Self.FK_Pet_Carer_PetDetail1">
+      <End Role="PetDetail" EntitySet="PetDetail" />
+      <End Role="Pet_Carer" EntitySet="Pet_Carer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PetDetail_Breed" Association="Self.FK_PetDetail_Breed">
+      <End Role="Breed" EntitySet="Breed" />
+      <End Role="PetDetail" EntitySet="PetDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PetDetail_Owner" Association="Self.FK_PetDetail_Owner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="PetDetail" EntitySet="PetDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PetDetail_Species" Association="Self.FK_PetDetail_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="PetDetail" EntitySet="PetDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

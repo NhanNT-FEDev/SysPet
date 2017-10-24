@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fall2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Breed">
+    <Key>
+      <PropertyRef Name="BreedID" />
+    </Key>
+    <Property Name="BreedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SpeciesID" Type="Int32" Nullable="false" />
+    <Property Name="BreedName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Species" Relationship="Self.FK_Breed_Species" FromRole="Breed" ToRole="Species" />
+    <NavigationProperty Name="PetDetails" Relationship="Self.FK_PetDetail_Breed" FromRole="Breed" ToRole="PetDetail" />
+  </EntityType>
+  <EntityType Name="Carer">
+    <Key>
+      <PropertyRef Name="CarerID" />
+    </Key>
+    <Property Name="CarerID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CarerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PetDetails" Relationship="Self.Pet_Carer" FromRole="Carer" ToRole="PetDetail" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="OwnerID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PetDetails" Relationship="Self.FK_PetDetail_Owner" FromRole="Owner" ToRole="PetDetail" />
+  </EntityType>
+  <EntityType Name="PetDetail">
+    <Key>
+      <PropertyRef Name="PetID" />
+    </Key>
+    <Property Name="PetID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Species" Type="Int32" Nullable="false" />
+    <Property Name="Breed" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="Boolean" Nullable="false" />
+    <Property Name="DayOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="OwnerID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="InDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OutDate" Type="DateTime" Precision="0" />
+    <Property Name="MedicalRecord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Breed1" Relationship="Self.FK_PetDetail_Breed" FromRole="PetDetail" ToRole="Breed" />
+    <NavigationProperty Name="Owner" Relationship="Self.FK_PetDetail_Owner" FromRole="PetDetail" ToRole="Owner" />
+    <NavigationProperty Name="Species1" Relationship="Self.FK_PetDetail_Species" FromRole="PetDetail" ToRole="Species" />
+    <NavigationProperty Name="Carers" Relationship="Self.Pet_Carer" FromRole="PetDetail" ToRole="Carer" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="SpeciesID" />
+    </Key>
+    <Property Name="SpeciesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SpeciesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Breeds" Relationship="Self.FK_Breed_Species" FromRole="Species" ToRole="Breed" />
+    <NavigationProperty Name="PetDetails" Relationship="Self.FK_PetDetail_Species" FromRole="Species" ToRole="PetDetail" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Breed_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="Breed" Type="Self.Breed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesID" />
+      </Principal>
+      <Dependent Role="Breed">
+        <PropertyRef Name="SpeciesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PetDetail_Breed">
+    <End Role="Breed" Type="Self.Breed" Multiplicity="1" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Breed">
+        <PropertyRef Name="BreedID" />
+      </Principal>
+      <Dependent Role="PetDetail">
+        <PropertyRef Name="Breed" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PetDetail_Owner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="PetDetail">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PetDetail_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesID" />
+      </Principal>
+      <Dependent Role="PetDetail">
+        <PropertyRef Name="Species" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pet_Carer">
+    <End Role="Carer" Type="Self.Carer" Multiplicity="*" />
+    <End Role="PetDetail" Type="Self.PetDetail" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Breeds" EntityType="Self.Breed" />
+    <EntitySet Name="Carers" EntityType="Self.Carer" />
+    <EntitySet Name="Owners" EntityType="Self.Owner" />
+    <EntitySet Name="PetDetails" EntityType="Self.PetDetail" />
+    <EntitySet Name="Species" EntityType="Self.Species" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Breed_Species" Association="Self.FK_Breed_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Breed" EntitySet="Breeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PetDetail_Breed" Association="Self.FK_PetDetail_Breed">
+      <End Role="Breed" EntitySet="Breeds" />
+      <End Role="PetDetail" EntitySet="PetDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PetDetail_Owner" Association="Self.FK_PetDetail_Owner">
+      <End Role="Owner" EntitySet="Owners" />
+      <End Role="PetDetail" EntitySet="PetDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PetDetail_Species" Association="Self.FK_PetDetail_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="PetDetail" EntitySet="PetDetails" />
+    </AssociationSet>
+    <AssociationSet Name="Pet_Carer" Association="Self.Pet_Carer">
+      <End Role="Carer" EntitySet="Carers" />
+      <End Role="PetDetail" EntitySet="PetDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

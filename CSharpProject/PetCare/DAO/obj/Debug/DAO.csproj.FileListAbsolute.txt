@@ -1,0 +1,12 @@
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\DAO.dll
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\DAO.pdb
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\DTO.dll
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\DTO.pdb
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\obj\Debug\DAO.dll
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\obj\Debug\DAO.pdb
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\DAO.dll.config
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\EntityFramework.dll
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\EntityFramework.xml
+C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\DAO\bin\Debug\EntityFramework.SqlServer.xml

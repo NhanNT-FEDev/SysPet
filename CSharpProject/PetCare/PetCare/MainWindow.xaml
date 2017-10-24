@@ -1,0 +1,108 @@
+﻿<Window x:Class="PetCare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetCare"
+        mc:Ignorable="d"
+        Title="MainWindow" Background="Gray" Height="700" Width="1000">
+    <StackPanel>
+
+        <Border BorderBrush="White" BorderThickness="10"  HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="-3,0,-0.4,0" Width="997">
+            <Border.BitmapEffect>
+                <BitmapEffectGroup>
+                    <DropShadowBitmapEffect Color="Blue" Direction="50" ShadowDepth="35" Softness="1" 
+       Opacity="0.5"/>
+                </BitmapEffectGroup>
+            </Border.BitmapEffect>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="0" CenterY="0" AngleX="0" AngleY="10" />
+            </Border.RenderTransform>
+
+            <Grid>
+                <Grid.Resources>
+                    <Style x:Key="labelStyle" TargetType="{x:Type Label}">
+                        <Setter Property="Foreground" Value="Olive"></Setter>
+                    </Style>
+
+                </Grid.Resources>
+                <Image Source="C:\Users\Quan Nguyen Minh\Desktop\CSharpProject\PetCare\PetCare\Images\Login.png" Stretch="Fill" x:Name="myImage" Margin="1,0,-0.2,3.8"/>
+                <Label Name="lbLogin" FontSize="22"  Content="Username" Margin="165,18,699.8,216.4" FontFamily="Sitka Heading" FontWeight="Bold" 
+                       Style="{StaticResource labelStyle}" RenderTransformOrigin="0.492,0.244">
+                    <Label.Effect>
+                        <DropShadowEffect Color="Black" Direction="250" Opacity="0.5" ShadowDepth="20"  RenderingBias="Quality" />
+                    </Label.Effect>
+                </Label>
+                <TextBox  RenderTransformOrigin="-0.553,0.087" Margin="304,18,421.8,228.4" Background="Ivory" Name="txtUsername" FontSize="25"/>
+                <Label Name="lbPassword" FontSize="22"  Content="Password" Margin="152,86,712.8,161" FontFamily="Sitka Heading" FontWeight="Bold" 
+                       Style="{StaticResource labelStyle}" RenderTransformOrigin="0.492,0.244">
+                    <Label.Effect>
+                        <DropShadowEffect Color="Black" Direction="250" Opacity=".5" ShadowDepth="20"  RenderingBias="Quality"/>
+                    </Label.Effect>
+                </Label>
+                <PasswordBox FontSize="25"  RenderTransformOrigin="-0.553,0.087" Margin="304,86,421.8,161" Background="Ivory" Name="txtPassword"/>
+                <Grid>
+                    <Button Margin="617,42,255.8,200"  Name="btnLogin" Content="Login"  FontSize="22"  BorderBrush="Transparent" FontWeight="Bold" Foreground="BlanchedAlmond" Click="btnLogin_Click_1">
+                        <Button.Resources>
+                            <Style  TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+
+                            </Style>
+                        </Button.Resources>
+                        <Button.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="Crimson"></GradientStop>
+                                <GradientStop Offset="1" Color="Aquamarine"></GradientStop>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Margin="752,42,115.8,200" Content="Reset" Name="btnReset"  FontSize="22" BorderBrush="Transparent" FontWeight="Bold" Foreground="BlanchedAlmond" Click="btnReset_Click">
+                        <Button.Resources>
+                            <Style  TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="Crimson"></GradientStop>
+                                <GradientStop Offset="1" Color="Aquamarine"></GradientStop>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+
+
+            </Grid>
+
+
+
+        </Border>
+
+        <Border Height="300" BorderThickness="5" BorderBrush="White" Margin="10,18,0.6,0" Width="1200">
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=myImage}">
+                    <VisualBrush.Transform>
+                        <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="200" CenterY="150"/>
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Aqua"/>
+                    <GradientStop Offset="0.8" Color="Transparent"/>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1.085" ScaleX="1.015"/>
+                    <SkewTransform AngleX="-20"/>
+                    <RotateTransform Angle="10"/>
+                    <TranslateTransform X="1.1547005383792524" Y="-5.289809421253949"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
+
+    </StackPanel>
+
+
+</Window>
